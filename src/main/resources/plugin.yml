@@ -1,5 +1,5 @@
 name: Fortuity
-version: '${project.version}'
+version: 2.0.0
 description: Play with your friends, everyone gets their own 1-block, 
   receive a random either every X seconds, last one standing wins.
 contributors:

@@ -1,11 +1,10 @@
 package net.cometcore.fortuity.utils;
 
-import net.cometcore.fortuity.Fortuity;
+import net.cometcore.fortuity.FortuitySpigot;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class SenderHelper {
      * @param color Color of the message
      */
     public static void sendMessage(List<Player> players, NamedTextColor color, String message) {
-        Bukkit.getScheduler().runTaskAsynchronously(Fortuity.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(FortuitySpigot.getINSTANCE(), () -> {
             for(Player player : players)
                 sendMessage(player, color, message);
         });
@@ -100,7 +99,7 @@ public class SenderHelper {
      * @param message Message to send
      */
     private static void broadcastMessage(NamedTextColor color, String message) {
-        Fortuity.getInstance().getServer().broadcast(Component.text(message).color(color));
+        FortuitySpigot.getINSTANCE().getServer().broadcast(Component.text(message).color(color));
     }
 
     /**

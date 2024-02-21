@@ -2,8 +2,8 @@ package net.cometcore.fortuity.commands;
 
 import net.cometcore.fortuity.commands.general.GeneralCommand;
 import net.cometcore.fortuity.game.GameProperties;
-import net.cometcore.fortuity.team.Team;
-import net.cometcore.fortuity.team.TeamManager;
+import net.cometcore.fortuity.game.team.Team;
+import net.cometcore.fortuity.game.team.TeamManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -18,29 +18,13 @@ public abstract class SubCommand {
      */
     public final String identifier;
     public final String description;
-    protected final GameProperties properties;
     public final Permission permission;
     protected GeneralCommand command;
-
-    public SubCommand(String identifier, String description, GameProperties properties) {
-        this.identifier = identifier;
-        this.description = description;
-        this.properties = properties;
-        this.permission = new Permission("");
-    }
 
     public SubCommand(String identifier, String description, Permission permission) {
         this.identifier = identifier;
         this.description = description;
         this.permission = permission;
-        this.properties = null;
-    }
-
-    public SubCommand(String identifier, String description, GameProperties properties, Permission permission) {
-        this.identifier = identifier;
-        this.description = description;
-        this.permission = permission;
-        this.properties = properties;
     }
 
     public GeneralCommand getCommand() {
@@ -73,19 +57,6 @@ public abstract class SubCommand {
      */
     protected List<String> playerListName() {
         return Bukkit.getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
-    }
-
-    /**
-     * Get the list of team's name
-     * @return List of team's name
-     */
-    @Nullable
-    protected List<String> teamListName() {
-        final List<Team> teams = TeamManager.getTeams();
-        if (teams == null || teams.isEmpty()) {
-            return null;
-        }
-        return teams.stream().map(Team::getName).collect(Collectors.toList());
     }
 
     public String getIdentifier() {
