@@ -1,0 +1,12 @@
+name: Fortuity
+version: '1.0.0'
+description: Play with your friends, everyone gets their own 1-block, 
+  receive a random either every X seconds, last one standing wins.
+contributors:
+  - Josiah Bigras (GreyLake)
+main: net.cometcore.fortuity.Fortuity
+api-version: '1.20'
+commands:
+  fortuity:
+    description: Fortuity game commands
+    usage: /fortuity <command>

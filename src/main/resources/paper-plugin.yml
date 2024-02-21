@@ -1,0 +1,4 @@
+name: Fortuity
+version: '${project.version}'
+main: net.cometcore.fortuity.Fortuity
+api-version: '1.20'
